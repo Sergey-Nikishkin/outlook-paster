@@ -13,19 +13,19 @@
 
   <!--Version. Updates from the store only get triggered if there is a version change. -->
   <Version>1.0.0.0</Version>
-  <ProviderName>Your Company</ProviderName>
+  <ProviderName>Sergey Nikishkin</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
   <!-- The display name of your add-in. Used on the store and various places of the Office UI such as the add-ins dialog. -->
   <DisplayName DefaultValue="HTML Injector" />
   <Description DefaultValue="Inject HTML code directly into your email body"/>
 
   <!-- Icon for your add-in. Used on installation screens and the add-ins dialog. -->
-  <IconUrl DefaultValue="https://yourusername.github.io/your-repo-name/assets/icon-32.png" />
-  <HighResolutionIconUrl DefaultValue="https://yourusername.github.io/your-repo-name/assets/icon-80.png"/>
+  <IconUrl DefaultValue="https://sergey-nikishkin.github.io/outlook-paster/assets/icon-32.png" />
+  <HighResolutionIconUrl DefaultValue="https://sergey-nikishkin.github.io/outlook-paster/assets/icon-80.png"/>
 
   <!-- Domains that will be allowed when navigating. For example, if you use ShowTaskpane and then have an href link, navigation will only be allowed if the domain is on this list. -->
   <AppDomains>
-    <AppDomain>https://yourusername.github.io</AppDomain>
+    <AppDomain>https://sergey-nikishkin.github.io</AppDomain>
   </AppDomains>
   <!--End Basic Settings. -->
 
@@ -41,7 +41,7 @@
   <FormSettings>
     <Form xsi:type="ItemEdit">
       <DesktopSettings>
-        <SourceLocation DefaultValue="https://yourusername.github.io/your-repo-name/index.html"/>
+        <SourceLocation DefaultValue="https://sergey-nikishkin.github.io/outlook-paster/index.html"/>
       </DesktopSettings>
     </Form>
   </FormSettings>
@@ -93,13 +93,13 @@
 
     <Resources>
       <bt:Images>
-        <bt:Image id="icon16" DefaultValue="https://yourusername.github.io/your-repo-name/assets/icon-16.png"/>
-        <bt:Image id="icon32" DefaultValue="https://yourusername.github.io/your-repo-name/assets/icon-32.png"/>
-        <bt:Image id="icon80" DefaultValue="https://yourusername.github.io/your-repo-name/assets/icon-80.png"/>
+        <bt:Image id="icon16" DefaultValue="https://sergey-nikishkin.github.io/outlook-paster/assets/icon-16.png"/>
+        <bt:Image id="icon32" DefaultValue="https://sergey-nikishkin.github.io/outlook-paster/assets/icon-32.png"/>
+        <bt:Image id="icon80" DefaultValue="https://sergey-nikishkin.github.io/outlook-paster/assets/icon-80.png"/>
       </bt:Images>
       <bt:Urls>
-        <bt:Url id="functionFile" DefaultValue="https://yourusername.github.io/your-repo-name/function-file.html"/>
-        <bt:Url id="taskPaneUrl" DefaultValue="https://yourusername.github.io/your-repo-name/index.html"/>
+        <bt:Url id="functionFile" DefaultValue="https://sergey-nikishkin.github.io/outlook-paster/function-file.html"/>
+        <bt:Url id="taskPaneUrl" DefaultValue="https://sergey-nikishkin.github.io/outlook-paster/index.html"/>
       </bt:Urls>
       <bt:ShortStrings>
         <bt:String id="groupLabel" DefaultValue="HTML Injector"/>
