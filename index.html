@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Injector Add-in</title>
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 100%;
+        }
+        h1 {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        textarea {
+            width: 100%;
+            height: 200px;
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+            font-family: monospace;
+        }
+        button {
+            background-color: #0078d4;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        button:hover {
+            background-color: #106ebe;
+        }
+        button:active {
+            background-color: #005a9e;
+        }
+        .status {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 4px;
+            display: none;
+        }
+        .success {
+            background-color: #dff6dd;
+            color: #107c10;
+            display: block;
+        }
+        .error {
+            background-color: #fde7e9;
+            color: #a80000;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>HTML Injector</h1>
+        <textarea id="htmlInput" placeholder="Paste your HTML code here..."></textarea>
+        <button id="insertButton">Insert HTML</button>
+        <div id="status" class="status"></div>
+    </div>
+
+    <script>
+        // Initialize Office.js
+        Office.onReady(function(info) {
+            // Make sure we're in Outlook
+            if (info.host === Office.HostType.Outlook) {
+                document.getElementById('insertButton').addEventListener('click', insertHtml);
+            }
+        });
+
+        // Function to insert HTML into the email body
+        function insertHtml() {
+            const htmlContent = document.getElementById('htmlInput').value;
+            const statusElement = document.getElementById('status');
+            
+            if (!htmlContent) {
+                showStatus('Please paste some HTML code first.', 'error');
+                return;
+            }
+
+            // Get the current item (email)
+            Office.context.mailbox.item.body.setSelectedDataAsync(
+                htmlContent,
+                { coercionType: Office.CoercionType.Html },
+                function(result) {
+                    if (result.status === Office.AsyncResultStatus.Succeeded) {
+                        showStatus('HTML successfully inserted into the email!', 'success');
+                        // Clear the textarea after successful insertion
+                        document.getElementById('htmlInput').value = '';
+                    } else {
+                        showStatus('Error inserting HTML: ' + result.error.message, 'error');
+                    }
+                }
+            );
+        }
+
+        // Function to show status messages
+        function showStatus(message, type) {
+            const statusElement = document.getElementById('status');
+            statusElement.textContent = message;
+            statusElement.className = 'status';
+            
+            if (type === 'success') {
+                statusElement.classList.add('success');
+            } else if (type === 'error') {
+                statusElement.classList.add('error');
+            }
+
+            // Hide the status message after 5 seconds
+            setTimeout(function() {
+                statusElement.className = 'status';
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
